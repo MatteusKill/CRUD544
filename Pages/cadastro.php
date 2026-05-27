@@ -1,6 +1,6 @@
 <?php
-require '../Classes/usuario.php';
-$usuario = new Usuario();
+    require '../Classes/usuario.php';
+    $usuario = new Usuario();
 ?>
 
 <!DOCTYPE html>
@@ -14,6 +14,7 @@ $usuario = new Usuario();
 
 <body>
     <h2 class="titulo-pagina">CADASTRO DE USUÁRIO</h2>
+    <a href="listar.php"><button>LISTAR USUÁRIOS</button></a>
     <form method="post">
         <input type="text" name="nome" id="" class="input-form" placeholder="Digite seu nome">
         <input type="email" name="email" id="" class="input-form" placeholder="Digite seu email">
@@ -34,7 +35,7 @@ $usuario = new Usuario();
         $confsenha = addslashes($_POST['confsenha']);
 
         if (!empty($nome) && !empty($email) && !empty($telefone) && !empty($senha) && !empty($confsenha)) {
-            $usuario->conectar("crud54", "localhost", "root", "");
+            $usuario->conectar("crud544", "localhost", "root", "");
             if ($usuario->msgErro == "") 
             {
                 echo "conectou";

@@ -38,6 +38,54 @@
                 return true;
             }
         }
+
+        public function ListarDados()
+        {
+            $dados_usuario = array();
+            global $pdo;
+
+            $sql = $pdo->prepare("SELECT * FROM usuario ORDER BY id_usuario");
+            $sql->execute();
+
+            $dados_usuario = $sql->fetchAll(PDO::FETCH_ASSOC);
+            return $dados_usuario;
+        }
+
+        public function excluirUsuario($id_usuario)
+        {
+            global $pdo;
+            $sql = $pdo->prepare("DELETE FROM usuario WHERE id_usuario = :id");
+            $sql->bindValue(":id", $id_usuario);
+            $sql->execute();
+        }
+        public function buscarDadosUsuario($id_usuario)
+        {
+            $dados_usuario = array();
+            global $pdo;
+            $sql = $pdo->prepare("SELECT * FROM usuario WHERE id_usuario = :id");
+            $sql->bindValue(":id", $id_usuario);
+            $sql->execute();
+
+            $dados_usuario = $sql->fetch(PDO::FETCH_ASSOC);
+
+            return $dados_usuario;
+        }
+        public function atualizarDadosUsuario($id_usuario)
+        {
+            $dados_usuario = array();
+            global $pdo;
+            $sql = $pdo->prepare("UPDATE usuario SET nome = :n, email = e:, telefone = :t WHERE id_usuario = id:");
+            $sql->bindValue(":n", $nome);
+            $sql->bindvalue(":e, $email");
+            $sql->bindValue(":t", $telefone);
+            $sql->bindValue(":id", $id_usuario);
+            $sql->execute();
+
+            $dados_usuario = $sql->fetch(PDO::FETCH_ASSOC);
+
+            return $dados_usuario;
+
+        }
     }
 
 ?>
