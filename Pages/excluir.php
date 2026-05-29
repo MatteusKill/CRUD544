@@ -10,5 +10,4 @@
     }
     header("location:listar.php");
 
-
 ?>
